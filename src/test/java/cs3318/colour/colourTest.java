@@ -48,4 +48,25 @@ public class colourTest {
 
         assertDoesNotThrow(() -> new Colour(element1, element2, element3));
     }
+
+    @Test
+    public void exceptionIfElementOutOfRangeBit() {
+        int element1 = 17;
+        int element2 = 9;
+        int element3 = -1;
+
+        /*
+        check if there is illegal argument, then throw a message or something
+        then verify within this test
+         */
+    }
+
+    @Test
+    public void noExceptionIfElementOutOfRangeBit() {
+        int element1 = 17;
+        int element2 = 9;
+        int element3 = 1;
+
+        assertDoesNotThrow(() -> new Colour(element1, element2, element3));
+    }
 }
