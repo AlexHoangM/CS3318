@@ -19,13 +19,11 @@ public class colourTest {
 
     @Test
     public void checkColorValuesCorrectDefaultRGBBit() {
-        int element1 = 17;
-        int element2 = 9;
-        int element3 = 1;
+        int colorInBit = 1791;
 
-        Colour color = new Colour(element1, element2, element3);
+        Colour color = new Colour(colorInBit);
 
-        assertArrayEquals(color.getValuesBit(), color.getValuesBit());
+        assertEquals(color.getValuesBit(), color.getValuesBit());
     }
 
     @Test
@@ -34,10 +32,9 @@ public class colourTest {
         float element2 = 0.3f;
         float element3 = -0.1f;
 
-        /*
-        check if there is illegal argument, then throw a message or something
-        then verify within this test
-         */
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> new Colour(element1, element2, element3));
+
+        assertEquals("Color element should be in range of float 0.0 and 1.0", exception.getMessage());
     }
 
     @Test
@@ -51,22 +48,17 @@ public class colourTest {
 
     @Test
     public void exceptionIfElementOutOfRangeBit() {
-        int element1 = 17;
-        int element2 = 9;
-        int element3 = -1;
+        int element = 17915;
 
-        /*
-        check if there is illegal argument, then throw a message or something
-        then verify within this test
-         */
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> new Colour(element));
+
+        assertEquals("Color element should be in range 16-23 for red; 8-15 for green; 0-7 for blue", exception.getMessage());
     }
 
     @Test
     public void noExceptionIfElementOutOfRangeBit() {
-        int element1 = 17;
-        int element2 = 9;
-        int element3 = 1;
+        int element = 1791;
 
-        assertDoesNotThrow(() -> new Colour(element1, element2, element3));
+        assertDoesNotThrow(() -> new Colour(element));
     }
 }
