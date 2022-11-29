@@ -27,4 +27,25 @@ public class colourTest {
 
         assertArrayEquals(color.getValuesBit(), color.getValuesBit());
     }
+
+    @Test
+    public void exceptionIfElementOutOfRangeFloat() {
+        float element1 = 0.1f;
+        float element2 = 0.3f;
+        float element3 = -0.1f;
+
+        /*
+        check if there is illegal argument, then throw a message or something
+        then verify within this test
+         */
+    }
+
+    @Test
+    public void noExceptionIfElementOutOfRangeFloat() {
+        float element1 = 0.1f;
+        float element2 = 0.3f;
+        float element3 = 0.1f;
+
+        assertDoesNotThrow(() -> new Colour(element1, element2, element3));
+    }
 }
